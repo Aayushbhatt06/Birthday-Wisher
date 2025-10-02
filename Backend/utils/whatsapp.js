@@ -30,10 +30,13 @@ Wishing you lots of happiness, success, and good health. Have an amazing year ah
 
   await client.sendMessage(chatId, message);
 };
-
+const check = () => {
+  const chatId = "91" + process.env.NUMBER + "@c.us";
+  sendWAMessage(chatId, "Whatsapp is working");
+};
 client.initialize();
 
 // export a function to always get latest QR
 const getQRCode = () => qrCodeData;
 
-module.exports = { sendWAMessage, getQRCode };
+module.exports = { sendWAMessage, getQRCode, check };
