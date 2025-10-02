@@ -2,6 +2,8 @@ const express = require("express");
 const sendOTP = require("./controller/sendOTP");
 const submit = require("./controller/submit");
 const verifyOtp = require("./controller/verifyOtp");
+const sendWAMessage = require("./utils/whatsapp");
+require("./utils/whatsapp");
 require("dotenv");
 require("./models/db");
 const cors = require("cors");
@@ -20,6 +22,7 @@ app.get("/", (req, res) => {
 app.post("/api/sendotp", sendOTP);
 app.post("/api/submit", submit);
 app.post("/api/verifyotp", verifyOtp);
+
 
 app.listen(PORT, () => {
   console.log(`Listening on PORT : ${PORT}`);

@@ -2,13 +2,13 @@ const userModel = require("../models/user");
 
 const submit = async (req, res) => {
   try {
-    const { email, DOB } = req.body;
+    const { phoneNo, email, DOB } = req.body;
     if (!email || !DOB) {
       return res.status(400).json({
         message: "Email and DOB are required",
         success: false,
       });
-    } 
+    }
 
     const user = await userModel.findOne({ email });
     if (!user) {
@@ -19,6 +19,7 @@ const submit = async (req, res) => {
     }
 
     user.dob = DOB;
+    user.number = phoneNo;
     await user.save();
 
     return res.status(200).json({
