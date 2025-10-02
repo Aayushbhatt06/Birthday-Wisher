@@ -6,7 +6,7 @@ require("dotenv");
 require("./models/db");
 const cors = require("cors");
 const app = express();
-
+require("./utils/cronjobs");
 app.use(
   cors(["http://localhost:5173", "https://birthday-wisher-plum.vercel.app"])
 );
