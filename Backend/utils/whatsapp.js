@@ -13,6 +13,12 @@ client.on("ready", () => {
   console.log("Client is ready!");
 });
 
+client.on("message", (msg) => {
+  if (msg.body == "!ping") {
+    msg.reply("pong");
+  }
+});
+
 const sendWAMessage = async (num, name) => {
   const number = `91${num}`;
   const chatId = number + "@c.us";
