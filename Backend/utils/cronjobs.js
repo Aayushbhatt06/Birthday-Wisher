@@ -35,6 +35,6 @@ I pray to God to bless you and your family with health and wealth. We will meet 
       }
     }
   } catch (err) {
-    console.error("Error fetching birthdays:", err);
+    console.error("Error in fetching birthdays:", err);
   }
 });
