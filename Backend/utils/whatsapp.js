@@ -1,12 +1,14 @@
-const qrcode = require("qrcode-terminal");
+const qrcode = require("qrcode"); // lowercase, matches the variable
 const { Client, LocalAuth } = require("whatsapp-web.js");
+
+let qrCodeData = null;
 
 const client = new Client({
   authStrategy: new LocalAuth(),
 });
 
-client.on("qr", (qr) => {
-  qrcode.generate(qr, { small: true });
+client.on("qr", async (qr) => {
+  qrCodeData = await qrcode.toDataURL(qr); // fixed variable name
 });
 
 client.on("ready", () => {
@@ -14,7 +16,7 @@ client.on("ready", () => {
 });
 
 client.on("message", (msg) => {
-  if (msg.body == "!ping") {
+  if (msg.body === "!ping") {
     msg.reply("pong");
   }
 });
@@ -31,4 +33,7 @@ Wishing you lots of happiness, success, and good health. Have an amazing year ah
 
 client.initialize();
 
-module.exports = sendWAMessage;
+// export a function to always get latest QR
+const getQRCode = () => qrCodeData;
+
+module.exports = { sendWAMessage, getQRCode };
