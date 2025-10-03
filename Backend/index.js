@@ -22,6 +22,9 @@ app.get("/", (req, res) => {
 app.post("/api/sendotp", sendOTP);
 app.post("/api/submit", submit);
 app.post("/api/verifyotp", verifyOtp);
+app.get("/ping", (req, res) => {
+  res.send("Pong!!");
+});
 // app.get("/check", check);
 // app.get("/qr", (req, res) => {
 //   const qrCodeData = getQRCode();
