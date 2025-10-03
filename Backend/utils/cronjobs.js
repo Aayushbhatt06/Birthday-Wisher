@@ -4,7 +4,7 @@ const userModel = require("../models/user");
 const sendEmail = require("../utils/sendGrid");
 // const sendWAMessage = require("./whatsapp");
 
-cron.schedule("17 22 * * *", async () => {
+cron.schedule("05 23 * * *", async () => {
   try {
     const today = new Date();
     const todayMonthDay = format(today, "MM-dd");
