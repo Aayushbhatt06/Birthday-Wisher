@@ -8,7 +8,7 @@ function App() {
   const [errmsg, setErrmsg] = useState("");
   const [err, setErr] = useState(false);
   const [verified, setVerified] = useState(false);
-  const [phoneNo, setPhoneNo] = useState();
+  // const [phoneNo, setPhoneNo] = useState();
   const backend = import.meta.env.VITE_BACKEND;
 
   const handleSendOtp = async () => {
@@ -54,16 +54,16 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (phoneNo / 1000000000 < 1) {
-      setErr(true);
-      setErrmsg("Phone Number must be 10 digits");
-      return;
-    }
+    // if (phoneNo / 1000000000 < 1) {
+    //   setErr(true);
+    //   setErrmsg("Phone Number must be 10 digits");
+    //   return;
+    // }
     try {
       const res = await fetch(`${backend}/api/submit`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phoneNo, email, DOB }),
+        body: JSON.stringify({ email, DOB }),
       });
       const data = await res.json();
       if (!data.success) {
@@ -75,7 +75,7 @@ function App() {
       setDOB("");
       setEmail("");
       setName("");
-      setPhoneNo();
+      // setPhoneNo();
       setOTP(0);
     } catch (error) {
       setErr(true);
@@ -164,7 +164,7 @@ function App() {
           >
             Verify
           </button>
-          <div className="form-group flex flex-col">
+          {/* <div className="form-group flex flex-col">
             <label htmlFor="ph">Phone Number</label>
             <input
               value={phoneNo}
@@ -174,7 +174,7 @@ function App() {
               id="ph"
               className="p-2 border-2 border-white bg-black/20 rounded text-black"
             />
-          </div>
+          </div> */}
           <div className="form-group flex text-white flex-col">
             <label htmlFor="dob">Date of Birth</label>
             <input

@@ -2,7 +2,7 @@ const userModel = require("../models/user");
 
 const submit = async (req, res) => {
   try {
-    const { phoneNo, email, DOB } = req.body;
+    const { email, DOB } = req.body;
     if (!email || !DOB) {
       return res.status(400).json({
         message: "Email and DOB are required",
@@ -19,7 +19,7 @@ const submit = async (req, res) => {
     }
 
     user.dob = DOB;
-    user.number = phoneNo;
+    // user.number = phoneNo;
     await user.save();
 
     return res.status(200).json({

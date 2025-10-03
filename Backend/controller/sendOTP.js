@@ -11,7 +11,7 @@ const sendOtp = async (req, res) => {
         .json({ message: "Name and email required", success: false });
     }
 
-    const otp = Math.floor(100000 + Math.random() * 900000); // 6-digit OTP
+    const otp = Math.floor(100000 + Math.random() * 900000);
     const data = {
       to: email,
       subject: "Email Verification",

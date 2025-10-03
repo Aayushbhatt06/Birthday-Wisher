@@ -2,9 +2,9 @@ const cron = require("node-cron");
 const { format } = require("date-fns");
 const userModel = require("../models/user");
 const sendEmail = require("../utils/sendGrid");
-const sendWAMessage = require("./whatsapp");
+// const sendWAMessage = require("./whatsapp");
 
-cron.schedule("0 10 * * *", async () => {
+cron.schedule("17 22 * * *", async () => {
   try {
     const today = new Date();
     const todayMonthDay = format(today, "MM-dd");
@@ -30,9 +30,9 @@ I pray to God to bless you and your family with health and wealth. We will meet 
 
       await sendEmail(data);
 
-      if (user.number) {
-        await sendWAMessage(user.number.toString(), user.name);
-      }
+      // if (user.number) {
+      //   await sendWAMessage(user.number.toString(), user.name);
+      // }
     }
   } catch (err) {
     console.error("Error in fetching birthdays:", err);
