@@ -1,0 +1,14 @@
+name: Ping Render Server
+
+on:
+  schedule:
+    - cron: "30 17 * * *" 
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Curl the Render Server
+        run: |
+          curl -s -o /dev/null -w "%{http_code}" https://birthday-wisher-1-jd5o.onrender.com/ping
